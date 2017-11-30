@@ -22,26 +22,18 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
+ *
+ * @package    Apartment
+ * @subpackage Apartment\Migration
  */
+namespace Apartment\Migration;
 
 /**
- * Attempts to load Composer's autoload.php as either a dependency or a
- * stand-alone package.
+ * Exception class thrown when migrations cannot be reversed using the 'change'
+ * feature.
  *
- * @return bool
+ * @author Rob Morgan <robbym@gmail.com>
  */
-return function () {
-    $files = [
-      __DIR__ . '/../../../autoload.php', // composer dependency
-      __DIR__ . '/../vendor/autoload.php', // stand-alone package
-    ];
-    foreach ($files as $file) {
-        if (is_file($file)) {
-            require_once $file;
-
-            return true;
-        }
-    }
-
-    return false;
-};
+class IrreversibleMigrationException extends \Exception
+{
+}

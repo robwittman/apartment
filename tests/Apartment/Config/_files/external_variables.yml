@@ -1,0 +1,13 @@
+paths:
+    migrations: '%%Apartment_CONFIG_DIR%%/migrations'
+
+environments:
+    default_migration_table: Apartmentlog
+    default_database: production
+    production:
+        adapter: mysql
+        host: '%%Apartment_DBHOST%%'
+        name: '%%Apartment_DBNAME%%'
+        user: '%%Apartment_DBUSER%%'
+        pass: '%%Apartment_DBPASS%%'
+        port: '%%Apartment_DBPORT%%'

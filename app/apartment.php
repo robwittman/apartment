@@ -1,9 +1,8 @@
 <?php
-/**
- * Apartment
+/* Phinx
  *
  * (The MIT license)
- * Copyright (c) 2015 Rob Morgan
+ * Copyright (c) 2014 Rob Morgan
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated * documentation files (the "Software"), to
@@ -24,24 +23,14 @@
  * IN THE SOFTWARE.
  */
 
-/**
- * Attempts to load Composer's autoload.php as either a dependency or a
- * stand-alone package.
- *
- * @return bool
- */
-return function () {
-    $files = [
-      __DIR__ . '/../../../autoload.php', // composer dependency
-      __DIR__ . '/../vendor/autoload.php', // stand-alone package
-    ];
-    foreach ($files as $file) {
-        if (is_file($file)) {
-            require_once $file;
+$autoloader = require __DIR__ . '/../src/composer_autoloader.php';
 
-            return true;
-        }
-    }
+if (!$autoloader()) {
+    die(
+        'You need to set up the project dependencies using the following commands:' . PHP_EOL .
+        'curl -sS https://getcomposer.org/installer | php' . PHP_EOL .
+        'php composer.phar install' . PHP_EOL
+    );
+}
 
-    return false;
-};
+return new Apartment\Console\ApartmentApplication();

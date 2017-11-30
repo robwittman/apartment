@@ -1,6 +1,6 @@
 <?php
 /*
- * This file is part of the Phinx package.
+ * This file is part of the Apartment package.
  *
  * (c) Rob Morgan <robbym@gmail.com>
  *

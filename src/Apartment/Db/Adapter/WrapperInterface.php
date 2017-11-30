@@ -22,26 +22,39 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
+ *
+ * @package    Apartment
+ * @subpackage Apartment\Db\Adapter
  */
+namespace Apartment\Db\Adapter;
 
 /**
- * Attempts to load Composer's autoload.php as either a dependency or a
- * stand-alone package.
+ * Wrapper Interface.
  *
- * @return bool
+ * @author Woody Gilk <woody.gilk@gmail.com>
  */
-return function () {
-    $files = [
-      __DIR__ . '/../../../autoload.php', // composer dependency
-      __DIR__ . '/../vendor/autoload.php', // stand-alone package
-    ];
-    foreach ($files as $file) {
-        if (is_file($file)) {
-            require_once $file;
+interface WrapperInterface
+{
+    /**
+     * Class constructor, must always wrap another adapter.
+     *
+     * @param  \Apartment\Db\Adapter\AdapterInterface $adapter
+     */
+    public function __construct(AdapterInterface $adapter);
 
-            return true;
-        }
-    }
+    /**
+     * Sets the database adapter to proxy commands to.
+     *
+     * @param  \Apartment\Db\Adapter\AdapterInterface $adapter
+     * @return \Apartment\Db\Adapter\AdapterInterface
+     */
+    public function setAdapter(AdapterInterface $adapter);
 
-    return false;
-};
+    /**
+     * Gets the database adapter.
+     *
+     * @throws \RuntimeException if the adapter has not been set
+     * @return \Apartment\Db\Adapter\AdapterInterface
+     */
+    public function getAdapter();
+}

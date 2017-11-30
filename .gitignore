@@ -24,6 +24,9 @@ tests/log
 # ignore core development artifacts
 ./db
 ./migrations
+./data
+*.sqlite3
+*.sqlite
 
 # sphinx generates HTML files for the documentation here
 docs/_build

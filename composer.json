@@ -1,33 +1,15 @@
 {
-    "name": "robmorgan/phinx",
+    "name": "robwittman/apartment",
     "type": "library",
-    "description": "Phinx makes it ridiculously easy to manage the database migrations for your PHP app.",
-    "keywords": ["phinx", "migrations", "database", "db", "database migrations"],
-    "homepage": "https://phinx.org",
+    "description": "Apartment wrapper for Phinx, allowing for multi-tenancy migrations",
+    "keywords": ["phinx", "migrations", "database", "db", "database migrations", "mulit-tenant", "multi-tenancy"],
     "license": "MIT",
-    "authors": [{
-        "name": "Rob Morgan",
-        "email": "robbym@gmail.com",
-        "homepage": "https://robmorgan.id.au",
-        "role": "Lead Developer"
-    }, {
-        "name": "Woody Gilk",
-        "email": "woody.gilk@gmail.com",
-        "homepage": "http://shadowhand.me",
-        "role": "Developer"
-    }, {
-        "name": "Richard Quadling",
-        "email": "rquadling@gmail.com",
-        "role": "Developer"
-    }, {
-        "name": "CakePHP Community",
-        "homepage": "https://github.com/cakephp/phinx/graphs/contributors"
-    }],
     "require": {
         "php": ">=5.4",
         "symfony/console": "~2.8|~3.0|~4.0",
         "symfony/config": "~2.8|~3.0|~4.0",
-        "symfony/yaml": "~2.8|~3.0|~4.0"
+        "symfony/yaml": "~2.8|~3.0|~4.0",
+        "league/climate": "^3.2"
     },
     "require-dev": {
         "phpunit/phpunit": "^4.8.26|^5.0",
@@ -35,12 +17,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Phinx\\": "src/Phinx"
+            "Apartment\\": "src/Apartment"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Test\\Phinx\\": "tests/Phinx"
+            "Test\\Apartment\\": "tests/Apartment"
         }
     },
     "scripts": {
@@ -52,5 +34,5 @@
         "cs-fix": "phpcbf --colors --standard=vendor/cakephp/cakephp-codesniffer/CakePHP ./src ./tests ./app",
         "test": "phpunit --colors=always"
     },
-    "bin": ["bin/phinx"]
+    "bin": ["bin/apartment"]
 }
